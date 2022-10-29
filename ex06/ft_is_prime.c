@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcarassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 16:27:49 by dcarassi          #+#    #+#             */
-/*   Updated: 2022/10/29 17:47:52 by dcarassi         ###   ########.fr       */
+/*   Created: 2022/10/29 18:41:09 by dcarassi          #+#    #+#             */
+/*   Updated: 2022/10/29 19:16:36 by dcarassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 
-int	ft_sqrt(int nb)
+int	ft_is_prime(int nb)
 {
-	long	i;
-	long	num;
+	int	primesheck;
+	int	div;
 
-	num = nb;
-	if (num == 0)
-		return (0);
-	else if (num == 1)
+	div = 2;
+	primesheck = 0;
+	if (nb == 2)
 		return (1);
-	i = 2;
-	if (i < num)
+	else if (nb > 2)
 	{
-		while (i * i <= num)
+		while (div <= (nb / 2) && primesheck == 0)
 		{
-			if (i * i == num)
-				return (i);
-			i++;
+			if (nb % div == 0)
+				primesheck = primesheck + 1;
+			div = div + 1;
 		}
 	}
-	return (0);
+	if (primesheck == 0)
+		return (1);
+	else
+		return (0);
 }
